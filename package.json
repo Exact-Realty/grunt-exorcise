@@ -2,7 +2,7 @@
   "name": "grunt-exorcise",
   "description": "Move Browserify source maps to a separate file using Exorcist and Grunt",
   "version": "2.1.1",
-  "homepage": "https://github.com/mikefrey/grunt-exorcise",
+  "homepage": "https://github.com/Exact-Realty/grunt-exorcise",
   "author": {
     "name": "Mike Frey",
     "email": "frey.mike@gmail.com"
@@ -17,30 +17,30 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/mikefrey/grunt-exorcise/blob/master/LICENSE-MIT"
+      "url": "https://github.com/Exact-Realty/grunt-exorcise/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 14"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "mocha"
   },
   "dependencies": {
-    "async": "~0.2.10",
-    "resumer": "0.0.0",
+    "async": "^3.2.3",
     "concat-stream": "~1.4.1",
-    "exorcist": "^0.4.0"
+    "exorcist": "^2.0.0",
+    "resumer": "0.0.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-jshint": "~0.6.0",
-    "grunt-contrib-nodeunit": "~0.2.0"
+    "grunt": "^1.5.2",
+    "grunt-cli": "^1.4.3",
+    "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-jshint": "^3.2.0",
+    "mocha": "^10.0.0"
   },
   "peerDependencies": {
-    "grunt": ">=0.4.0"
+    "grunt": ">=1.0.0"
   },
   "keywords": [
     "gruntplugin"

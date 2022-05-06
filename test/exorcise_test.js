@@ -1,58 +1,43 @@
 'use strict';
 
-var grunt = require('grunt');
+const assert = require('assert');
+const grunt = require('grunt');
 
-/*
-  ======== A Handy Little Nodeunit Reference ========
-  https://github.com/caolan/nodeunit
+describe('grunt-exorcise', () => {
+  describe('bundle', () => {
+    const actual = grunt.file.read('tmp/map/bundle.js');
+    const expected = grunt.file.read('test/expected/bundle.js');
+    it('should be rewritten with source map url instead of inlined', () => {
+      assert.equal(actual, expected);
+    });
+  });
 
-  Test methods:
-    test.expect(numAssertions)
-    test.done()
-  Test assertions:
-    test.ok(value, [message])
-    test.equal(actual, expected, [message])
-    test.notEqual(actual, expected, [message])
-    test.deepEqual(actual, expected, [message])
-    test.notDeepEqual(actual, expected, [message])
-    test.strictEqual(actual, expected, [message])
-    test.notStrictEqual(actual, expected, [message])
-    test.throws(block, [error], [message])
-    test.doesNotThrow(block, [error], [message])
-    test.ifError(value)
-*/
+  describe('map', () => {
+    it('should exist', () => {
+      assert.ok(grunt.file.exists('tmp/map/bundle.map'));
+    });
 
-exports.exorcise = {
-  bundle: function(test) {
-    test.expect(1)
+    const actual = grunt.file.read('tmp/map/bundle.map');
+    const expected = grunt.file.read('test/expected/bundle.map');
 
-    var actual = grunt.file.read('tmp/map/bundle.js')
-    var expected = grunt.file.read('test/expected/bundle.js')
-    test.equal(actual, expected, 'should be rewritten with source map url instead of inlined')
+    it('should be correct', () => {
+      assert.equal(actual, expected);
+    });
+  });
 
-    test.done()
-  },
-  map: function(test) {
-    test.expect(2)
+  describe('noMap', () => {
+    it('should exist', () => {
+      assert.ok(grunt.file.exists('tmp/nomap/bundle.js'), 'should exist');
+    });
+    it('should not exist', () => {
+      assert.ok(!grunt.file.exists('tmp/nomap/bundle.nomap'));
+    });
 
-    test.ok(grunt.file.exists('tmp/map/bundle.map'), 'should exist')
+    const actual = grunt.file.read('tmp/nomap/bundle.js');
+    const expected = grunt.file.read('test/fixtures/bundle.nomap.js');
 
-    var actual = grunt.file.read('tmp/map/bundle.map')
-    var expected = grunt.file.read('test/expected/bundle.map')
-    test.equal(actual, expected, 'should be correct')
-
-    test.done()
-  },
-  noMap: function(test) {
-    test.expect(3)
-
-    test.ok(grunt.file.exists('tmp/nomap/bundle.js'), 'should exist')
-    test.ok(!grunt.file.exists('tmp/nomap/bundle.nomap'), 'should not exist')
-
-    var actual = grunt.file.read('tmp/nomap/bundle.js')
-    var expected = grunt.file.read('test/fixtures/bundle.nomap.js')
-    test.equal(actual, expected, 'should be correct')
-
-    test.done()
-  }
-}
+    it('should be correct', () => {
+      assert.equal(actual, expected);
+    });
+  });
+});

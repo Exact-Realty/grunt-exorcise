@@ -17,6 +17,11 @@ var concat = require('concat-stream')
 
 module.exports = function(grunt) {
 
+  function fail(msg, cb) {
+    grunt.log.warn(msg)
+    throw new Error(msg)
+  }
+
   grunt.registerMultiTask('exorcise', 'Move Browserify source maps to a separate file', function() {
     var done = this.async()
 
@@ -30,10 +35,12 @@ module.exports = function(grunt) {
 
     // Iterate over all specified file groups.
     async.eachSeries(this.files, function(file, cb) {
-      if (!file.src || !file.src[0])
+      if (!file.src || !file.src[0]) {
         return fail('Source file was not defined.', cb)
-      if (!grunt.file.exists(file.src[0]))
+      }
+      if (!grunt.file.exists(file.src[0])) {
         return fail('Source file "' + file.src[0].cyan + '" not found.', cb)
+      }
 
       var src = file.src[0]
       var dest = file.dest
@@ -58,17 +65,13 @@ module.exports = function(grunt) {
       var ex = exorcist(dest, options.url, options.root, options.base)
       ex.on('missing-map', function(msg) {
         grunt.log.warn(msg);
-        if (options.strict)
+        if (options.strict) {
           done(false)
+        }
       })
 
       stream.pipe(ex).pipe(write)
     }, done)
   })
-
-  function fail(msg, cb) {
-    grunt.log.warn(msg)
-    throw new Error(msg)
-  }
 
 }

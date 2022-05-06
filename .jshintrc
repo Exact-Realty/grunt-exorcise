@@ -1,4 +1,6 @@
 {
+  "esversion": 6,
+  "mocha": true,
   "curly": true,
   "eqeqeq": true,
   "immed": true,
