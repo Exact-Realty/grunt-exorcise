@@ -1,7 +1,7 @@
 {
-  "name": "grunt-exorcise",
+  "name": "@exact-realty/grunt-exorcise",
   "description": "Move Browserify source maps to a separate file using Exorcist and Grunt",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "homepage": "https://github.com/Exact-Realty/grunt-exorcise",
   "author": {
     "name": "Mike Frey",
@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/mikefrey/grunt-exorcise.git"
+    "url": "git://github.com/Exact-Realty/grunt-exorcise.git"
   },
   "bugs": {
-    "url": "https://github.com/mikefrey/grunt-exorcise/issues"
+    "url": "https://github.com/Exact-Realty/grunt-exorcise/issues"
   },
   "licenses": [
     {
