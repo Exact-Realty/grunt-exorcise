@@ -1,4 +1,4 @@
-# grunt-exorcise [![Travis CI](https://travis-ci.org/mikefrey/grunt-exorcise.svg)](https://travis-ci.org/mikefrey/grunt-exorcise)
+# grunt-exorcise [![Travis CI](https://travis-ci.org/Exact-Realty/grunt-exorcise.svg)](https://travis-ci.org/Exact-Realty/grunt-exorcise)
 
 > Move Browserify source maps to a separate file using Exorcist and Grunt
 
