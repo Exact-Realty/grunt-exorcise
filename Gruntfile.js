@@ -60,7 +60,19 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-  // By default, lint
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('mocha', function () {
+    var done = this.async();
+    require('child_process').exec('mocha', function (err, stdout) {
+      grunt.log.write(stdout);
+      done(err);
+    });
+  });
+
+  // Whenever the "test" task is run, first clean the "tmp" dir, then run this
+  // plugin's task(s), then test the result.
+  grunt.registerTask('test', ['clean', 'exorcise', 'mocha']);
+
+  // By default, lint and run all tests.
+  grunt.registerTask('default', ['jshint', 'test']);
 
 };
