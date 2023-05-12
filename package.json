@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "async": "^3.2.3",
-    "concat-stream": "~1.4.1",
+    "concat-stream": "~1.6.2",
     "exorcist": "^2.0.0",
     "resumer": "0.0.0"
   },
